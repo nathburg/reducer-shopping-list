@@ -5,6 +5,7 @@
 // import { createShoppingListItem } from '../services/shopping-list-items';
 
 import {
+  editItemAction,
   editItemInputAction,
   submitItemAction,
 } from '../actions/list-actions';
@@ -26,3 +27,6 @@ export const submitItemHandler = async (dispatch, input) => {
 
 export const editInputHandler = (dispatch, body) =>
   dispatch(editItemInputAction(body));
+
+export const editItemButtonHandler = (dispatch, id) =>
+  dispatch(editItemAction(id));

@@ -44,3 +44,10 @@ export const submitItemAction = (body) => {
     body,
   };
 };
+
+export const editItemAction = (id) => {
+  return {
+    type: 'edit-item-state',
+    id,
+  };
+};

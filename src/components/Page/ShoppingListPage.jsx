@@ -18,7 +18,10 @@ export default function ShoppingListPage() {
     <section>
       <h1>My Shopping List</h1>
       <ShoppingListForm input={state.itemInput} dispatch={dispatch} />
-      <ShoppingList shoppingList={state.shoppingList} />
+      <ShoppingList
+        shoppingList={state.shoppingList}
+        dispatch={dispatch}
+      />
     </section>
   );
 }

@@ -13,6 +13,9 @@ const postState = (item) => {
   };
 };
 
+const indexById = (array, id) =>
+  array.findIndex((element) => element.id === id);
+
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'edit-item-input':
@@ -28,10 +31,31 @@ export const reducer = (state, action) => {
       };
 
     case 'items-load':
-      console.log('action.items ', action.items);
       return {
         ...state,
         shoppingList: action.items.map((item) => postState(item)),
+      };
+
+    case 'edit-item-state':
+      console.log(
+        !state.shoppingList[indexById(state.shoppingList, action.id)]
+          .isEditing
+      );
+      return {
+        ...state,
+        shoppingList: state.shoppingList.map((item) => {
+          if (item.id === action.id) {
+            return {
+              ...item,
+              isEditing:
+                !state.shoppingList[
+                  indexById(state.shoppingList, action.id)
+                ].isEditing,
+            };
+          } else {
+            return item;
+          }
+        }),
       };
     case 'posts-load-start':
       return {
