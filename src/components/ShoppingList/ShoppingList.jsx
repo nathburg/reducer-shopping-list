@@ -1,14 +1,15 @@
-import { useContext } from 'react';
-import { Context } from '../ShoppingListProvider';
 import ListItem from './ListItem';
 
-export default function ShoppingList({ shoppingList }) {
+export default function ShoppingList({ shoppingList, dispatch }) {
   return (
     <ol>
       {shoppingList.map((item) => (
         <ListItem
-          key={shoppingList.indexOf(item)}
-          description={item}
+          key={item.id}
+          id={item.id}
+          description={item.description}
+          isEditing={item.isEditing}
+          dispatch={dispatch}
         />
       ))}
     </ol>

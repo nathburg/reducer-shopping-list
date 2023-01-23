@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   editInputHandler,
   submitItemHandler,
@@ -9,7 +8,7 @@ export default function ShoppingListForm({ input, dispatch }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        submitItemHandler(dispatch);
+        submitItemHandler(dispatch, input);
       }}
     >
       <input
