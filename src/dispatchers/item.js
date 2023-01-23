@@ -8,6 +8,7 @@ import {
   editItemInputAction,
   submitItemAction,
 } from '../actions/list-actions';
+import { createShoppingListItem } from '../services/shopping-list-items';
 
 // export const onCreateItem = async (dispatch, user, body) => {
 //     dispatch(itemCandidateCreateStartAction());
@@ -18,8 +19,10 @@ import {
 //     }
 // }
 
-export const submitItemHandler = (dispatch) =>
-  dispatch(submitItemAction());
+export const submitItemHandler = async (dispatch, input) => {
+  const resp = await createShoppingListItem({ item_name: input });
+  dispatch(submitItemAction(resp[0]));
+};
 
 export const editInputHandler = (dispatch, body) =>
   dispatch(editItemInputAction(body));

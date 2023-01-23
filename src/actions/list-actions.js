@@ -16,13 +16,6 @@
 //   };
 // };
 
-// export const itemsLoadSuccessAction = (items) => {
-//   return {
-//     items,
-//     type: 'items-load-success',
-//   };
-// };
-
 // export const itemsUpdatePostErrorAction = (itemId, error) => {
 //   return {
 //     itemId,
@@ -31,6 +24,13 @@
 //   };
 // };
 
+export const itemsLoad = (items) => {
+  return {
+    items,
+    type: 'items-load',
+  };
+};
+
 export const editItemInputAction = (body) => {
   return {
     type: 'edit-item-input',
@@ -38,8 +38,9 @@ export const editItemInputAction = (body) => {
   };
 };
 
-export const submitItemAction = () => {
+export const submitItemAction = (body) => {
   return {
     type: 'submit-item',
+    body,
   };
 };

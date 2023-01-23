@@ -8,8 +8,8 @@ export const initialState = () => {
 const postState = (item) => {
   return {
     isEditing: false,
-    body: item.body,
-    item,
+    description: item.item_name,
+    id: item.id,
   };
 };
 
@@ -22,20 +22,21 @@ export const reducer = (state, action) => {
       };
     case 'submit-item':
       return {
+        ...state,
         itemInput: '',
-        shoppingList: [...state.shoppingList, state.itemInput],
+        shoppingList: [postState(action.body), ...state.shoppingList],
       };
 
+    case 'items-load':
+      console.log('action.items ', action.items);
+      return {
+        ...state,
+        shoppingList: action.items.map((item) => postState(item)),
+      };
     case 'posts-load-start':
       return {
         ...state,
         loadMode: 'loading',
-      };
-    case 'posts-load-success':
-      return {
-        ...state,
-        loadMode: 'success',
-        postsState: action.posts.map(postState),
       };
     case 'posts-load-error':
       return {

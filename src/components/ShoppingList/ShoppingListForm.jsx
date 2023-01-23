@@ -9,7 +9,7 @@ export default function ShoppingListForm({ input, dispatch }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        submitItemHandler(dispatch);
+        submitItemHandler(dispatch, input);
       }}
     >
       <input
