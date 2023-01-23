@@ -1,8 +1,4 @@
 import { useContext, useEffect } from 'react';
-import {
-  editInputHandler,
-  submitItemHandler,
-} from '../../dispatchers/item';
 import { itemsLoadDispatch } from '../../dispatchers/items';
 import ShoppingList from '../ShoppingList/ShoppingList';
 import ShoppingListForm from '../ShoppingList/ShoppingListForm';

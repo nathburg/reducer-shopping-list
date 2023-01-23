@@ -36,7 +36,6 @@ export default function ListItem({
       <button
         onClick={() => {
           editItemButtonHandler(dispatch, id);
-          console.log('click received');
         }}
       >
         Edit

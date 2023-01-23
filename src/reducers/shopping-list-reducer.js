@@ -59,7 +59,6 @@ export const reducer = (state, action) => {
         ...state,
         shoppingList: state.shoppingList.map((item) => {
           if (item.id === action.id) {
-            console.log(item.id);
             return {
               ...item,
               isEditing: false,
