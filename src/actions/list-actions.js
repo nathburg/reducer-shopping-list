@@ -51,3 +51,11 @@ export const editItemAction = (id) => {
     id,
   };
 };
+
+export const editItemSubmitAction = (id, newText) => {
+  return {
+    type: 'edit-item-submit',
+    id,
+    newText,
+  };
+};

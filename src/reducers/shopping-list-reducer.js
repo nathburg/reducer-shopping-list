@@ -37,10 +37,6 @@ export const reducer = (state, action) => {
       };
 
     case 'edit-item-state':
-      console.log(
-        !state.shoppingList[indexById(state.shoppingList, action.id)]
-          .isEditing
-      );
       return {
         ...state,
         shoppingList: state.shoppingList.map((item) => {
@@ -57,6 +53,24 @@ export const reducer = (state, action) => {
           }
         }),
       };
+
+    case 'edit-item-submit':
+      return {
+        ...state,
+        shoppingList: state.shoppingList.map((item) => {
+          if (item.id === action.id) {
+            console.log(item.id);
+            return {
+              ...item,
+              isEditing: false,
+              description: action.newText,
+            };
+          } else {
+            return item;
+          }
+        }),
+      };
+
     case 'posts-load-start':
       return {
         ...state,

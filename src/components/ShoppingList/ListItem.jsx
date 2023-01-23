@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { editItemButtonHandler } from '../../dispatchers/item';
+import {
+  editItemButtonHandler,
+  editItemSubmitHandler,
+} from '../../dispatchers/item';
 
 export default function ListItem({
   id,
@@ -16,6 +19,14 @@ export default function ListItem({
         value={newText}
         onChange={(e) => setNewText(e.target.value)}
       ></input>
+      <button
+        onClick={() => {
+          editItemSubmitHandler(dispatch, id, newText);
+          setNewText('');
+        }}
+      >
+        Submit Change
+      </button>
     </div>
   );
 

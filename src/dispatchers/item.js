@@ -7,9 +7,13 @@
 import {
   editItemAction,
   editItemInputAction,
+  editItemSubmitAction,
   submitItemAction,
 } from '../actions/list-actions';
-import { createShoppingListItem } from '../services/shopping-list-items';
+import {
+  createShoppingListItem,
+  updateShoppingItem,
+} from '../services/shopping-list-items';
 
 // export const onCreateItem = async (dispatch, user, body) => {
 //     dispatch(itemCandidateCreateStartAction());
@@ -30,3 +34,12 @@ export const editInputHandler = (dispatch, body) =>
 
 export const editItemButtonHandler = (dispatch, id) =>
   dispatch(editItemAction(id));
+
+export const editItemSubmitHandler = async (
+  dispatch,
+  id,
+  newText
+) => {
+  await updateShoppingItem(id, { item_name: newText });
+  dispatch(editItemSubmitAction(id, newText));
+};
